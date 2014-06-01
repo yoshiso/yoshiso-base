@@ -29,3 +29,15 @@ template "/home/#{node['user']}/.vimrc" do
 	mode 0644
 	source ".vimrc"
 end
+
+
+prompt = node['prompt'] || "(*´д｀*)"
+template "/home/#{node['user']}/.bashrc" do
+	owner node['user']
+	group node['user']
+	mode 0644
+	variables({
+    prompt:prompt
+	})
+	source ".bashrc.erb"
+end
